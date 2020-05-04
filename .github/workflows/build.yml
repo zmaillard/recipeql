@@ -1,6 +1,9 @@
 name: Function App Deploy
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 env:
   AZURE_FUNCTIONAPP_NAME: Clinical-dev

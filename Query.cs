@@ -7,6 +7,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using GraphQL.Types;
 
 namespace RecipeQL
 {
@@ -18,6 +19,22 @@ namespace RecipeQL
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
+
+            var schema = Schema.For(@"
+                type Query {
+                  recipes: [Recipe]
+                }
+
+                type Recipe {
+                  id: ID!
+                  name: String!
+                  Month: Int
+                  Day: Int
+                }
+            ", _ => {
+                _.Types.Include<GraphQLQuery>();
+            });
+
 
             string name = req.Query["name"];
 
