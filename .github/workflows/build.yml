@@ -3,7 +3,7 @@ name: Function App Deploy
 on: push
 
 env:
-  AZURE_FUNCTIONAPP_NAME: recipeql
+  AZURE_FUNCTIONAPP_NAME: Clinical-dev
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
   DOTNET_VERSION: 3.1.201
 
